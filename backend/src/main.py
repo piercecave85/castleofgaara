@@ -21,7 +21,7 @@ app.add_middleware(
 )
 
 ssl_context = ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER)
-ssl_context.load_cert_chain('/home/pcave/workspace/hue_v1/cert.pem', keyfile='/home/pcave/workspace/hue_v1/key.pem')
+# ssl_context.load_cert_chain('/home/pcave/workspace/hue_v1/cert.pem', keyfile='/home/pcave/workspace/hue_v1/key.pem')
 
 @app.get("/")
 async def root():
@@ -66,5 +66,6 @@ async def status():
     return {"message": jsonObject["state"]["on"]}
 
 if __name__ == "__main__":
-    uvicorn.run("main:app", host="0.0.0.0", port=8000, ssl=ssl_context)
+    uvicorn.run("main:app", host="0.0.0.0", port=8000)
+    # uvicorn.run("main:app", host="0.0.0.0", port=8000, ssl=ssl_context)
 
